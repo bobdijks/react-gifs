@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import SearchBar from './search_bar.jsx';
-import Gif from './gif.jsx';
-import GifList from './gif_list.jsx';
 import giphy from 'giphy-api';
+
+import SearchBar from './search_bar';
+import Gif from './gif';
+import GifList from './gif_list';
+
+const GIPHY_API_KEY = 'TjFtnmB0UfffIHLOuH7uxnZTmsK1U4sE';
 
 class App extends Component {
   constructor(props) {
@@ -12,17 +15,23 @@ class App extends Component {
       gifs: [],
       selectedGifId: "l46CqLVMWzaJUFPLW"
     };
+    this.search = this.search.bind(this);
+    this.selectGif = this.selectGif.bind(this);
   }
 
-  search = (query) => {
-    giphy('TjFtnmB0UfffIHLOuH7uxnZTmsK1U4sE').search({
-      q: query,
-      rating: 'g',
-      limit: 10
-    }, (error, result) => {
+  search(query) {
+    const giphEndpoint = `https://api.giphy.com/v1/gifs/search?api_key=${GIPHY_API_KEY}&q=${query}&limit=10`
+    fetch(giphEndpoint).then(response => response.json()).then((data) => {
+      const gifs = data.data.map(giph => giph.id)
       this.setState({
-        gifs: result.data
-      });
+        gifs: gifs
+      })
+    })
+  }
+
+  selectGif(id) {
+    this.setState({
+      selectedGifId: id
     });
   }
 
@@ -36,7 +45,7 @@ class App extends Component {
           </div>
         </div>
         <div className="right-scene">
-          <GifList gifs={this.state.gifs} />
+          <GifList gifs={this.state.gifs} selectGif={this.selectGif} />
         </div>
       </div>
     );
