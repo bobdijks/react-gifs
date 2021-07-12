@@ -1,6 +1,5 @@
 {
   "license": "UNLICENSED",
-  "homepage": "http://bobdijks.me/react-gifs/",
   "devDependencies": {
     "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.6",
@@ -33,8 +32,8 @@
     "react-dom": "16.2"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development",
-    "lint": "eslint './src/**/*.js*'",
+    "start": "webpack-dev-server",
+    "lint": "eslint './src/**/*.js' './src/**/*.jsx'",
     "deploy": "webpack -p && gh-pages -d dist"
   }
 }
