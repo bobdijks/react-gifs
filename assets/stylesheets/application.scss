@@ -4,7 +4,7 @@
 }
 
 .left-scene {
-  flex: 0 0 60%;
+  flex: 0 0 50%;
   position: sticky;
   display: flex;
   flex-direction: column;
@@ -49,14 +49,15 @@
 }
 
 .right-scene {
-  flex: 0 0 40%;
+  text-align: center;
+  flex: 0 0 50%;
   background-color: #ecf0f1;
   overflow: scroll;
 
   .gif-list {
     column-count: 2;
     column-gap: 5px;
-    padding: 5px;
+    padding: 15px;
 
     .gif {
       width: 100%;

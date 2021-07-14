@@ -45,6 +45,7 @@ class App extends Component {
           </div>
         </div>
         <div className="right-scene">
+          <h2>Click a GIF to bring it to the left</h2>
           <GifList gifs={this.state.gifs} selectGif={this.selectGif} />
         </div>
       </div>
