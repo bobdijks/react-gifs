@@ -20,13 +20,13 @@ class App extends Component {
   }
 
   search(query) {
-    const giphEndpoint = `https://api.giphy.com/v1/gifs/search?api_key=${GIPHY_API_KEY}&q=${query}&limit=10`
+    const giphEndpoint = `https://api.giphy.com/v1/gifs/search?api_key=${GIPHY_API_KEY}&q=${query}&limit=15`;
     fetch(giphEndpoint).then(response => response.json()).then((data) => {
-      const gifs = data.data.map(giph => giph.id)
+      const gifs = data.data.map(giph => giph.id);
       this.setState({
         gifs: gifs
-      })
-    })
+      });
+    });
   }
 
   selectGif(id) {
@@ -45,7 +45,6 @@ class App extends Component {
           </div>
         </div>
         <div className="right-scene">
-          <h2>Click a GIF to bring it to the left</h2>
           <GifList gifs={this.state.gifs} selectGif={this.selectGif} />
         </div>
       </div>
